@@ -20,4 +20,4 @@ export const databaseProviders = [
       return sequelize;
     },
   },
-];
+]; 
