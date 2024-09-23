@@ -1,9 +1,6 @@
 import { Sequelize } from 'sequelize-typescript';
 import { User } from 'src/users/users.model';
 
-
-
-const port = Number(process.env.DB_PORT);
 export const databaseProviders = [
   {
     provide: 'SEQUELIZE',
@@ -11,15 +8,15 @@ export const databaseProviders = [
       const sequelize = new Sequelize({
         dialect: 'postgres',
         host: process.env.DB_HOST,
-        port: port,
+        port: process.env.DB_PORT as any,
         username: process.env.DB_USER,
         password: process.env.DB_PASSWORD,
         database: process.env.DB_DATABASE,
       });
-      sequelize.addModels([
-        User
-      ]);
+      sequelize.addModels([User]);
       await sequelize.sync();
+      console.log('here');
+      console.log(typeof sequelize);
       return sequelize;
     },
   },
