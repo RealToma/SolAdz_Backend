@@ -16,6 +16,13 @@ export class UsersController {
     }
 
     @HttpCode(HttpStatus.OK)
+    @Get('matching-bonus/:address')
+    async getMatchingBonus(@Param('address') address: string) {
+        const bonus = await this.userService.getMatchingBonus(address);
+        return bonus;
+    }
+
+    @HttpCode(HttpStatus.OK)
     @Get('commission/txn/:address')
     async getClaimCommissionTxn (@Param('address') address: string) {
         const txn = await this.userService.withdrawCommission(address);

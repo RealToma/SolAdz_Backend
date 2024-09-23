@@ -22,4 +22,7 @@ export class User extends Model {
 
     @Column({type: DataType.DOUBLE})
     whalePoolReward: number;
+
+    @Column({type: DataType.DOUBLE})
+    amount: number;
 }
